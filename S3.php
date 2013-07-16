@@ -2282,6 +2282,10 @@ final class S3Request
 				$this->response->headers['size'] = (int)$value;
 			elseif ($header == 'Content-Type')
 				$this->response->headers['type'] = $value;
+            elseif ($header == 'Cache-Control')
+                $this->response->headers['cache-control'] = $value;
+            elseif ($header == 'Expires')
+                $this->response->headers['expires'] = $value;
 			elseif ($header == 'ETag')
 				$this->response->headers['hash'] = $value{0} == '"' ? substr($value, 1, -1) : $value;
 			elseif (preg_match('/^x-amz-meta-.*$/', $header))
